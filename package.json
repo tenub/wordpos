@@ -1,0 +1,15 @@
+{
+  "name": "wordpos",
+  "version": "1.0.0",
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-jsdoc": "^0.5.4"
+  },
+  "scripts": {
+    "preci": "npm install && npm install -g grunt-cli",
+    "ci": "grunt ci"
+  }
+}
