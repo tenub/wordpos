@@ -99,7 +99,18 @@ function WordPosition(string)
 
 		return factorial(total) / repetitions;
 	}
+
+	console.log(this.init());
 }
 
-// find the word position of an example string
-(new WordPosition('CAB')).init();
+// if run via nodejs, process arguments as input strings
+if (typeof process !== 'undefined' && typeof process.argv !== 'undefined') {
+	var args = process.argv.slice(2);
+
+	for (var i = 0, l = args.length; i < l; i++) {
+		WordPosition(args[i]);
+	}
+}
+
+// if run in a browser, simply call the function with an input string
+// WordPosition('ASDJAIDOSASADIVIFDSK');
