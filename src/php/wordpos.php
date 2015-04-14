@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * example via command line: php wordpos.php ASDJAIDOSASADIVIFDSK
+ * returns Alphabetical position of input string of all possible anagrams: 4691253285296, calculated in 0.000334 seconds
+ */
 class WordPosition
 {
 	function __construct($string) {
@@ -7,8 +12,6 @@ class WordPosition
 		// ensure the input string follows proper format, otherwise just return false
 		if (preg_match('/^[A-Z]{2,20}$/', $string) === 0) { return false; }
 
-		$cur_word_char;
-		$cur_uniq_char;
 		$word_chars = str_split($string);
 		$uniq_chars = $this->getUniqChars($word_chars);
 		sort($uniq_chars, SORT_STRING);
@@ -37,13 +40,13 @@ class WordPosition
 		}
 
 		$time += microtime(true);
-		echo 'alphabetical position of input string in all possible anagrams: ' . ($position + 1) . ' calculated in ' . sprintf('%f', $time) . ' seconds';
+		echo 'Alphabetical position of input string of all possible anagrams: ' . ($position + 1) . ', calculated in ' . sprintf('%f', $time) . ' seconds';
 	}
 
 	/**
-	 * find the unique characters in an array
-	 * @param {array} array - array of characters
-	 * @return {array} unique array
+	 * Find the unique characters in an array
+	 * @param array $array Array of characters
+	 * @return array Unique array
 	 */
 	public function getUniqChars($array) {
 		$res = array();
@@ -54,12 +57,12 @@ class WordPosition
 	}
 
 	/**
-	 * compute the frequency of elements in an array
-	 * @param {array} array - array containing elements to count
-	 * @return {object} unique character keys with frequency values
+	 * Compute the frequency of elements in an array
+	 * @param array $array Array containing elements to count
+	 * @return array Unique character keys with frequency values
 	 */
 	public function frequency($array) {
-		$counts = [];
+		$counts = array();
 
 		$l = count($array);
 		foreach ($array as $value) {
@@ -70,11 +73,9 @@ class WordPosition
 	}
 
 	/**
-	 * calculate factorial in range 0...20 via memoization
-	 * iterative or table look-up methods had longer runtimes on average
-	 * @see {@link http://jsperf.com/word-fact/3|jsPerf}
-	 * @param {integer} n - input integer
-	 * @return {integer} calculated factorial
+	 * Calculate factorial in range 0...20 via memoization
+	 * @param integer $n Input integer
+	 * @return integer Calculated factorial
 	 */
 	public function factorial($n) {
 		static $cache = array(1);
@@ -94,9 +95,9 @@ class WordPosition
 
 	/**
 	 * compute the number possible permutations of a string's characters with a fixed start
-	 * @param {string} start - unique character
-	 * @param {array} counts - object of each character with their frequencies
-	 * @return {number}
+	 * @param string $start Unique character
+	 * @param array $counts Associative array of each character with their frequencies
+	 * @return number
 	 */
 	public function permutations($start, $counts) {
 		$total = 0;
@@ -113,10 +114,10 @@ class WordPosition
 	}
 }
 
-// call the function with an input string
+// call the class for each given command line argument
 global $argv;
 array_shift($argv);
 foreach ($argv as $string) {
-	new WordPosition($string);
+	$word = new WordPosition($string);
 }
 ?>
