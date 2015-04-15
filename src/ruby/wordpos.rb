@@ -6,7 +6,7 @@ require "benchmark"
 class WordPosition
 	def initialize(string)
 		time = Benchmark.measure do
-			# ensure the input string follows proper format, otherwise just return false
+			# ensure the input string follows proper format, otherwise just return nil
 			return nil if /^[A-Z]{2,20}$/ !~ string
 
 			word_chars = string.split("")
@@ -38,13 +38,13 @@ class WordPosition
 	end
 
 	# compute the frequency of elements in an array
-	# @param array {array} - array containing elements to count
-	# @return array unique character keys with frequency values
+	# @param {array} array - contains elements to count
+	# @return {hash} unique character keys with frequency values
 	def frequency(array)
 		array.each_with_object(Hash.new(0)) { |key, hash| hash[key] += 1 }
 	end
 
-	# calculate factorial in range 0...20 via memoization
+	# calculate factorial in range 0...20
 	# @param {integer} n - input integer
 	# @return {integer} calculated factorial
 	def factorial(n)
@@ -52,16 +52,16 @@ class WordPosition
 	end
 
 	# compute the number possible permutations of a string's characters with a fixed start
-	# @param string {start} - unique character
-	# @param array {counts} associative array of each character with their frequencies
-	# @return number
+	# @param {string} start - unique character
+	# @param {hash} counts - contains each character with their frequencies
+	# @return {number} permutation count
 	def permutations(start, counts)
 		total = 0
 		repetitions = 1
 		current = 0
 
 		counts.each do |char, count|
-			current = (char === start) ? count - 1 : count
+			current = (char == start) ? count - 1 : count
 			total += current
 			repetitions *= factorial(current)
 		end
