@@ -40,7 +40,11 @@ class WordPosition
 		}
 
 		$time += microtime(true);
-		echo 'Alphabetical position of input string of all possible anagrams: ' . ($position + 1) . ', calculated in ' . sprintf('%f', $time) . ' seconds';
+
+		echo "Alphabetical position of '$string' of all possible anagrams: " . ($position + 1);
+		echo "\n";
+		echo "Calculated in " . sprintf("%f", $time) . "s";
+		echo "\n";
 	}
 
 	/**
