@@ -48,7 +48,7 @@ class WordPosition
 	 * @param array $array Array of characters
 	 * @return array Unique array
 	 */
-	public function getUniqChars($array) {
+	private function getUniqChars($array) {
 		$res = array();
 
 		foreach($array as $key => $val) { $res[$val] = true; }
@@ -61,7 +61,7 @@ class WordPosition
 	 * @param array $array Array containing elements to count
 	 * @return array Unique character keys with frequency values
 	 */
-	public function frequency($array) {
+	private function frequency($array) {
 		$counts = array();
 
 		$l = count($array);
@@ -77,7 +77,7 @@ class WordPosition
 	 * @param integer $n Input integer
 	 * @return integer Calculated factorial
 	 */
-	public function factorial($n) {
+	private function factorial($n) {
 		static $cache = array(1);
 
 		$n = (int) $n;
@@ -99,7 +99,7 @@ class WordPosition
 	 * @param array $counts Associative array of each character with their frequencies
 	 * @return number
 	 */
-	public function permutations($start, $counts) {
+	private function permutations($start, $counts) {
 		$total = 0;
 		$repetitions = 1;
 		$current = 0;
