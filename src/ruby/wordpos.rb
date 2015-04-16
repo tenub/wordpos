@@ -17,7 +17,6 @@ class WordPosition
 			# find the word position of all possible combinations of its characters
 			while word_chars.size > 0
 				cur_word_char = word_chars.shift
-				l = uniq_chars.size
 				uniq_chars.each do |cur_uniq_char|
 					if cur_word_char == cur_uniq_char
 						counts[cur_uniq_char] -= 1

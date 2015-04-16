@@ -1,4 +1,9 @@
+bin/
 build/
 dist/
 doc/
 node_modules/
+obj/
+*.userprefs
+
+c-sharp/
